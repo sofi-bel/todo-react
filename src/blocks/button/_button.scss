@@ -1,0 +1,18 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+.button {
+  max-height: $icon-size;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: $border-radius;
+    background-color: map.get($theme-colors, "button-hover");
+  }
+}

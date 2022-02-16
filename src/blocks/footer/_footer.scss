@@ -1,0 +1,17 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+.footer {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  box-sizing: border-box;
+  height: $navbar-height;
+  padding: 0 map.get($spaces, sm);
+  background-color: map.get($theme-colors, "primary");
+  color: map.get($theme-colors, "text-light");
+
+  &__author-link {
+    margin-left: map.get($spaces, xxs);
+  }
+}

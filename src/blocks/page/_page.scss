@@ -1,0 +1,12 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+.page {
+  margin: 0;
+  font-weight: map.get($font-weight, "normal");
+  font-size: map.get($font-size, xs);
+  font-family: $font-stack;
+  line-height: map.get($line-height, lg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

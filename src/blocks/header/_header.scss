@@ -1,0 +1,13 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+.header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: $navbar-height;
+  padding: 0 map.get($spaces, sm);
+  background-color: map.get($theme-colors, "primary");
+}

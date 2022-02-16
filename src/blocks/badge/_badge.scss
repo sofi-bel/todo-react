@@ -1,0 +1,48 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+.badge {
+  margin: 0 map.get($spaces, xxs);
+  padding: map.get($spaces, xxs);
+  border-radius: 50%;
+
+  &_color_blue {
+    background-color: $blue;
+  }
+
+  &_color_indigo {
+    background-color: $indigo;
+  }
+
+  &_color_purple {
+    background-color: $purple;
+  }
+
+  &_color_pink {
+    background-color: $pink;
+  }
+
+  &_color_red {
+    background-color: $red;
+  }
+
+  &_color_orange {
+    background-color: $orange;
+  }
+
+  &_color_yellow {
+    background-color: $yellow;
+  }
+
+  &_color_green {
+    background-color: $green;
+  }
+
+  &_color_teal {
+    background-color: $teal;
+  }
+
+  &_color_cyan {
+    background-color: $cyan;
+  }
+}
