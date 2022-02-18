@@ -1,5 +1,55 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+$list-item-height: 2.5rem;
+$list-icon-size: 1.5rem;
+
 .list {
   margin: 0;
   padding: 0;
   list-style: none;
+
+  &__item {
+    display: flex;
+    gap: map.get($spaces, xxs);
+    align-items: center;
+    box-sizing: border-box;
+    min-height: $list-item-height;
+    padding: map.get($spaces, xxs);
+    border-radius: $border-radius;
+    color: map.get($theme-colors, "text-secondary");
+    font-size: map.get($font-size, xs);
+    cursor: pointer;
+
+    &.current:not(.project__header) {
+      background-color: map.get($theme-colors, "list-item-hover");
+    }
+
+    &:hover:not(.project__header) {
+      background-color: map.get($theme-colors, "list-item-hover");
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $list-icon-size;
+    min-height: $list-icon-size;
+
+    &_position_right {
+      margin-left: auto;
+    }
+
+    &.project__header-icon_position_right:hover {
+      border-radius: $border-radius;
+      background-color: map.get($theme-colors, "list-item-hover");
+    }
+  }
+
+  &__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
