@@ -6,8 +6,8 @@
   flex: 0 0 auto;
   align-items: center;
   box-sizing: border-box;
-  height: $navbar-height;
-  padding: 0 map.get($spaces, sm);
+  height: $footer-height;
+  padding: 0 map.get($spaces, md);
   background-color: map.get($theme-colors, "primary");
   color: map.get($theme-colors, "text-light");
 
