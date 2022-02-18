@@ -1,0 +1,14 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+.colors {
+  &__list {
+    display: flex;
+    gap: map.get($spaces, xxs);
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    max-width: fit-content;
+  }
+}
