@@ -11,8 +11,8 @@ $sidebar-width: 19rem;
   &__sidebar {
     box-sizing: border-box;
     width: $sidebar-width;
-    height: calc(100vh - (#{$navbar-height} * 2));
-    padding: map.get($spaces, sm);
+    height: calc(100vh - (#{$navbar-height} + #{$footer-height}));
+    padding: map.get($spaces, md);
     background-color: map.get($theme-colors, "bg-secondary");
   }
 }
