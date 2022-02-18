@@ -28,7 +28,7 @@ function App() {
       </header>
       <main className="content app__content">
         <div className="content__sidebar">
-          <Category
+          <Filter
             items={[
               {
                 icon: (
@@ -81,6 +81,58 @@ function App() {
                 color: "purple",
                 title: "Shopping list",
                 current: false,
+              },
+            ]}
+            colors={[
+              {
+                id: 1,
+                name: "blue",
+                hex: "#0d6efd",
+              },
+              {
+                id: 2,
+                name: "indigo",
+                hex: "#6610f2",
+              },
+              {
+                id: 3,
+                name: "purple",
+                hex: "#6f42c1",
+              },
+              {
+                id: 4,
+                name: "pink",
+                hex: "#d63384",
+              },
+              {
+                id: 5,
+                name: "red",
+                hex: "#dc3545",
+              },
+              {
+                id: 6,
+                name: "orange",
+                hex: "#fd7e14",
+              },
+              {
+                id: 7,
+                name: "yellow",
+                hex: "#ffc107",
+              },
+              {
+                id: 8,
+                name: "green",
+                hex: "#198754",
+              },
+              {
+                id: 9,
+                name: "teal",
+                hex: "#20c997",
+              },
+              {
+                id: 10,
+                name: "cyan",
+                hex: "#0dcaf0",
               },
             ]}
           />
