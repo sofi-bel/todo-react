@@ -1,10 +1,23 @@
 @use "sass:map";
 @import "./src/scss/variables";
 
+$badge-size: 0.625rem;
+$badge-size-lg: 1.25rem;
+
 .badge {
-  margin: 0 map.get($spaces, xxs);
-  padding: map.get($spaces, xxs);
+  min-width: $badge-size;
+  min-height: $badge-size;
   border-radius: 50%;
+
+  &_size_big {
+    min-width: $badge-size-lg;
+    min-height: $badge-size-lg;
+    border: $border-width solid map.get($theme-colors, "bg-primary");
+
+    &.active {
+      border-color: map.get($theme-colors, "border-color");
+    }
+  }
 
   &_color_blue {
     background-color: $blue;
