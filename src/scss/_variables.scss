@@ -11,13 +11,15 @@ $teal: #20c997;
 $cyan: #0dcaf0;
 $theme-colors: (
   "primary": $red,
+  "secondary": #f3f3f3,
   "bg-primary": #fff,
   "bg-secondary": #fafafa,
-  "text-primary": #202020,
-  "text-secondary": #333,
+  "text-primary": #333,
+  "text-secondary": #3f3f3f,
   "text-light": #fff,
-  "category-hover": #ececec,
-  "button-hover": #fff3,
+  "list-item-hover": #ececec,
+  "button-icon-hover": #fff3,
+  "border-color": #ddd,
 );
 $container-widths: (
   xs: 320px,
@@ -35,10 +37,10 @@ $grid-breakpoints: (
   xxl: 1400px,
 );
 $spaces: (
-  xxs: 0.375rem,
+  xxs: 0.5rem,
   xs: 1rem,
-  sm: 3rem,
-  md: 6rem,
+  sm: 2rem,
+  md: 3rem,
   lg: 10rem,
   xl: 12rem,
   xxl: 15rem,
@@ -60,7 +62,10 @@ $line-height: (
   lg: 1.25,
 );
 $navbar-height: 2.75rem;
+$footer-height: $navbar-height;
 $icon-size: 1.5rem;
 $border-radius: 2px;
+$border-width: 3px;
 $transition-duration: 1s;
 $opacity: 0.3;
+$animation-duration: 0.5s;
