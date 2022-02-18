@@ -1,0 +1,45 @@
+@use "sass:map";
+@use "sass:color";
+@import "./src/scss/variables";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spaces, sm);
+
+  &__label {
+    display: block;
+    margin-bottom: map.get($spaces, xxs);
+    font-weight: map.get($font-weight, "bold");
+  }
+
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 map.get($spaces, sm);
+    padding: map.get($spaces, xxs);
+    border: 1px solid map.get($theme-colors, "border-color");
+    border-radius: $border-radius;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      border-color: color.adjust(
+        map.get($theme-colors, "border-color"),
+        $lightness: -10%
+      );
+    }
+
+    &:active {
+      border-color: color.adjust(
+        map.get($theme-colors, "border-color"),
+        $lightness: -12.5%
+      );
+    }
+  }
+
+  &__button {
+    width: 100%;
+    padding: map.get($spaces, xs) 0;
+  }
+}

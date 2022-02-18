@@ -1,0 +1,43 @@
+@use "sass:map";
+@import "./src/scss/variables";
+@import "./src/scss/helpers";
+
+$content-width-xs: 17.5rem;
+$content-width-md: 26.875rem;
+
+.popup {
+  @extend %fixed-full-size;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0 0 0 / 50%);
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: map.get($spaces, sm);
+    box-sizing: border-box;
+    max-width: $content-width-xs;
+    padding: map.get($spaces, xs);
+    border-radius: $border-radius;
+    background-color: map.get($theme-colors, "bg-primary");
+    box-shadow: 0 0 map.get($spaces, md) rgb(0 0 0 / 15%);
+
+    @media (min-width: map.get($grid-breakpoints, md)) {
+      max-width: $content-width-md;
+      padding: map.get($spaces, sm);
+    }
+  }
+
+  &__title {
+    padding: 0;
+    font-size: map.get($font-size, md);
+  }
+
+  &__footer {
+    display: flex;
+    gap: map.get($spaces, xs);
+  }
+}
