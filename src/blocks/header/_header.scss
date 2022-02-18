@@ -8,6 +8,6 @@
   justify-content: space-between;
   box-sizing: border-box;
   height: $navbar-height;
-  padding: 0 map.get($spaces, sm);
+  padding: 0 map.get($spaces, md);
   background-color: map.get($theme-colors, "primary");
 }
