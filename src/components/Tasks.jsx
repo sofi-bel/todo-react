@@ -22,7 +22,7 @@ function Tasks() {
           <label htmlFor="check" className="task__checkbox">
             <BsCheck2 className="task__checkbox-icon" />
           </label>
-          <p className="task__title text">task</p>
+          <input type="text" className="task__title" value="task" />
           <button
             className="task__icon list__icon button button_type_icon"
             aria-label="Remove Task"

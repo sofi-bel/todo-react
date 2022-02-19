@@ -54,5 +54,7 @@ $checkbox-size: 1.125rem;
 
   &__title {
     flex: 1;
+    border: 0;
+    outline: none;
   }
 }
