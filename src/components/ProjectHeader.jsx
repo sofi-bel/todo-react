@@ -40,13 +40,13 @@ function ProjectHeader({onNewProject}) {
         >
           <BsChevronDown size="16px"/>
         </button>
-        <p className="project__header-title text">Projects</p>
+        <p className="project__header-title list__title text">Projects</p>
         <button
           onClick={() => setOpenPopup(!openPopup)}
           className="project__header-icon project__header-icon_position_right
           list__icon list__icon_position_right
           button button_type_icon"
-          aria-label="Add of Project"
+          aria-label="Add Project"
         >
           <BsPlus size="21px"/>
         </button>

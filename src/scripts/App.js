@@ -32,13 +32,14 @@ function App() {
     <div className="app">
       <header className="header app__header">
         <button
-          className="button button_type_icon button__sidebar-toggle"
+          className="button button_type_icon button_theme_light
+          button__sidebar-toggle"
           aria-label="Main menu"
         >
           <BsList color="#fff" size="24px"/>
         </button>
         <button
-          className="button button_type_icon button__add-task"
+          className="button button_type_icon button_theme_light button__add-task"
           aria-label="Add task"
         >
           <BsPlus color="#fff" size="24px"/>
@@ -80,6 +81,10 @@ function App() {
           />
           <Project
             onAddProject = {onAddProject}
+            onRemoveProject = {id => {
+              const newProjectsList = projects.filter(item => item.id !== id);
+              setProjects(newProjectsList);
+            }}
             projects={projects}
           />
         </div>

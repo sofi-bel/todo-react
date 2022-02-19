@@ -57,6 +57,12 @@
 
     &:hover {
       border-radius: $border-radius;
+      background-color: map.get($theme-colors, "list-item-hover");
+    }
+  }
+
+  &_theme_light {
+    &:hover {
       background-color: map.get($theme-colors, "button-icon-hover");
     }
   }

@@ -5,6 +5,9 @@ $list-item-height: 2.5rem;
 $list-icon-size: 1.5rem;
 
 .list {
+  $self: &;
+  $project: project;
+
   margin: 0;
   padding: 0;
   list-style: none;
@@ -21,11 +24,8 @@ $list-icon-size: 1.5rem;
     font-size: map.get($font-size, xs);
     cursor: pointer;
 
-    &.current:not(.project__header) {
-      background-color: map.get($theme-colors, "list-item-hover");
-    }
-
-    &:hover:not(.project__header) {
+    &.current:not(#{$project}__header),
+    &:hover:not(.#{$project}__header) {
       background-color: map.get($theme-colors, "list-item-hover");
     }
   }
@@ -37,17 +37,23 @@ $list-icon-size: 1.5rem;
     min-width: $list-icon-size;
     min-height: $list-icon-size;
 
-    &_position_right {
-      margin-left: auto;
-    }
-
-    &.project__header-icon_position_right:hover {
+    &.#{$project}__header-icon_position_right:hover {
       border-radius: $border-radius;
       background-color: map.get($theme-colors, "list-item-hover");
+    }
+
+    &_position_right:not(.#{$project}__header-icon) {
+      opacity: 0;
+      transition: opacity $transition-duration;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
   &__title {
+    flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
