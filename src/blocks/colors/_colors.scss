@@ -4,8 +4,8 @@
 .colors {
   &__list {
     display: flex;
-    gap: map.get($spaces, xxs);
     flex-wrap: wrap;
+    gap: map.get($spaces, xxs);
   }
 
   &__item {

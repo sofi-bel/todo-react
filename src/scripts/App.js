@@ -1,5 +1,6 @@
 import Filter from "../components/Filter";
 import Project from "../components/Project";
+import { useState } from "react";
 import {
   BsInbox,
   BsCalendar3,
@@ -9,7 +10,24 @@ import {
   BsList
 } from "react-icons/bs";
 
+import DB from "../assets/db.json";
+
 function App() {
+  const [projects, setProjects] = useState(
+    DB.projects.map(item => {
+      item.color = DB.colors.filter(color => color.id === item.colorId)[0].name;
+      return item;
+    })
+  );
+
+  const onAddProject = (obj) => {
+     const newProjectList = [
+      ...projects,
+      obj
+    ]
+    setProjects(newProjectList);
+  };
+
   return (
     <div className="app">
       <header className="header app__header">
@@ -61,80 +79,8 @@ function App() {
             ]}
           />
           <Project
-            projects={[
-              {
-                color: "blue",
-                title: "Personal",
-                current: false,
-              },
-              {
-                color: "cyan",
-                title: "Someday / maybe",
-                current: false,
-              },
-              {
-                color: "teal",
-                title: "Routines",
-                current: false,
-              },
-              {
-                color: "purple",
-                title: "Shopping list",
-                current: false,
-              },
-            ]}
-            colors={[
-              {
-                id: 1,
-                name: "blue",
-                hex: "#0d6efd",
-              },
-              {
-                id: 2,
-                name: "indigo",
-                hex: "#6610f2",
-              },
-              {
-                id: 3,
-                name: "purple",
-                hex: "#6f42c1",
-              },
-              {
-                id: 4,
-                name: "pink",
-                hex: "#d63384",
-              },
-              {
-                id: 5,
-                name: "red",
-                hex: "#dc3545",
-              },
-              {
-                id: 6,
-                name: "orange",
-                hex: "#fd7e14",
-              },
-              {
-                id: 7,
-                name: "yellow",
-                hex: "#ffc107",
-              },
-              {
-                id: 8,
-                name: "green",
-                hex: "#198754",
-              },
-              {
-                id: 9,
-                name: "teal",
-                hex: "#20c997",
-              },
-              {
-                id: 10,
-                name: "cyan",
-                hex: "#0dcaf0",
-              },
-            ]}
+            onAddProject = {onAddProject}
+            projects={projects}
           />
         </div>
         <div className="content__tasks"/>

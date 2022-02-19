@@ -3,10 +3,31 @@ import classNames from "classnames";
 import { BsChevronDown, BsPlus } from "react-icons/bs";
 
 import Badge from "./Badge";
+import DB from "../assets/db.json";
 
-function ProjectHeader({colors}) {
+function ProjectHeader({onNewProject}) {
   const [openPopup, setOpenPopup] = useState(false);
-  const [seletedColor, selectColor] = useState(1);
+  const [currentColor, selectCurrentColor] = useState(DB.colors[0].id);
+  const [nameNewProject, setNameNewProject] = useState("");
+
+  const addProject = () => {
+    if(!nameNewProject) {
+      alert("Enter project name");
+      return;
+    }
+    const color = DB.colors.filter(c => c.id === currentColor)[0].name;
+    onNewProject({"id": Math.random(),
+      "name": nameNewProject,
+      color
+    });
+    onClose();
+  }
+
+  const onClose = () => {
+    setOpenPopup(!openPopup);
+    setNameNewProject("");
+    selectCurrentColor(DB.colors[0].id);
+  }
 
   return (
     <>
@@ -46,6 +67,10 @@ function ProjectHeader({colors}) {
                 Name
               </label>
               <input
+                value={nameNewProject}
+                onChange={(e) =>
+                  setNameNewProject(e.target.value)
+                }
                 type="text"
                 name="project-name"
                 id="project-name"
@@ -61,7 +86,7 @@ function ProjectHeader({colors}) {
               <div className="form__colors">
                 <ul className="colors__list list">
                   {
-                    colors.map((item, index) => (
+                    DB.colors.map((item, index) => (
                       <li
                         key={index}
                         className= {
@@ -72,10 +97,10 @@ function ProjectHeader({colors}) {
                       >
                         {
                           <Badge
-                            onClick={() => selectColor(item.id)}
+                            onClick={() => selectCurrentColor(item.id)}
                             key={item.id}
                             color={item.name}
-                            className={seletedColor === item.id && 'active'}
+                            className={currentColor === item.id && "active"}
                             size= "big"
                           />
                         }
@@ -86,14 +111,15 @@ function ProjectHeader({colors}) {
               </div>
             </div>
             <div className="popup__footer">
-              <button onClick={() => setOpenPopup(!openPopup)}
+              <button onClick={onClose}
                       className="form__button button button_theme_secondary"
               >
                 Cancel
               </button>
               <button
+                onClick={addProject}
                 className="form__button button button_theme_primary"
-                type="submit"
+                type="button"
               >
                 Save
               </button>

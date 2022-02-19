@@ -3,10 +3,10 @@ import classNames from "classnames";
 import ProjectHeader from "./ProjectHeader"
 import Badge from "./Badge";
 
-function Project({projects, colors}) {
+function Project({projects, onAddProject}) {
   return (
     <ul className="project list">
-      <ProjectHeader colors={colors}/>
+      <ProjectHeader onNewProject={onAddProject}/>
       {
         projects.map((item, index) => (
           <li
@@ -26,7 +26,7 @@ function Project({projects, colors}) {
                 <Badge color={item.color}/>
               </div>
             }
-            <span className="project__title list__title">{item.title}</span>
+            <span className="project__title list__title">{item.name}</span>
           </li>
         ))
       }
