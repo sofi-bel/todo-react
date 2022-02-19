@@ -20,6 +20,8 @@ $theme-colors: (
   "list-item-hover": #ececec,
   "button-icon-hover": #fff3,
   "border-color": #ddd,
+  "checkbox-color": #808080,
+  "checkbox-hover-color": #80808033,
 );
 $container-widths: (
   xs: 320px,
@@ -67,5 +69,6 @@ $icon-size: 1.5rem;
 $border-radius: 2px;
 $border-width: 3px;
 $transition-duration: 1s;
+$transition-duration-fast: 0.3s;
 $opacity: 0.3;
 $animation-duration: 0.5s;

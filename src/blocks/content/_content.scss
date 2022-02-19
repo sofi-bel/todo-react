@@ -6,13 +6,20 @@ $sidebar-width: 19rem;
 .content {
   display: flex;
   flex: 1 0 auto;
-  flex-direction: column;
+
+  &__sidebar,
+  &__tasks {
+    box-sizing: border-box;
+    padding: map.get($spaces, md);
+  }
 
   &__sidebar {
-    box-sizing: border-box;
-    width: $sidebar-width;
+    max-width: $sidebar-width;
     height: calc(100vh - (#{$navbar-height} + #{$footer-height}));
-    padding: map.get($spaces, md);
     background-color: map.get($theme-colors, "bg-secondary");
+  }
+
+  &__tasks {
+    flex: 1;
   }
 }

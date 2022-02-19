@@ -11,6 +11,7 @@ import {
 } from "react-icons/bs";
 
 import DB from "../assets/db.json";
+import Tasks from "../components/Tasks";
 
 function App() {
   const [projects, setProjects] = useState(
@@ -88,7 +89,9 @@ function App() {
             projects={projects}
           />
         </div>
-        <div className="content__tasks"/>
+        <div className="content__tasks">
+          <Tasks />
+        </div>
       </main>
       <footer className="footer">
         <p className="footer__author text">&copy; 2022</p>

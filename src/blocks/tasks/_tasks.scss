@@ -1,0 +1,25 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+.tasks {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: map.get($spaces, sm);
+    border-bottom: 1px solid map.get($theme-colors, "border-color");
+  }
+
+  &__title {
+    font-size: map.get($font-size, md);
+
+    @media (min-width: map.get($grid-breakpoints, xl)) {
+      font-size: map.get($font-size, xl);
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+}
