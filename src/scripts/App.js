@@ -1,6 +1,5 @@
-import Filter from "../components/Filter";
-import Project from "../components/Project";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import {
   BsInbox,
   BsCalendar3,
@@ -10,22 +9,32 @@ import {
   BsList
 } from "react-icons/bs";
 
-import DB from "../assets/db.json";
+import Filter from "../components/Filter";
+import Project from "../components/Project";
 import Tasks from "../components/Tasks";
 
+import DB from "../assets/db.json";
+
 function App() {
-  const [projects, setProjects] = useState(
-    DB.projects.map(item => {
-      item.color = DB.colors.filter(color => color.id === item.colorId)[0].name;
-      return item;
-    })
-  );
+  const [projects, setProjects] = useState(DB.projects.map(item => {
+    item.color = DB.colors.filter(color => color.id === item.colorId)[0].name;
+    return item;
+  }));
+  const [colors, setColors] = useState(1);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/projects?_expand=color&_embed=tasks")
+      .then(({ data }) => {
+        setProjects(data);
+      });
+    axios.get("http://localhost:3001/colors").then(({ data }) => {
+      setColors(data);
+    });
+  }, []);
 
   const onAddNewProject = (obj) => {
-     const newProjectList = [
-      ...projects,
-      obj
-    ]
+    const newProjectList = [...projects, obj];
     setProjects(newProjectList);
   };
 
@@ -81,12 +90,13 @@ function App() {
             ]}
           />
           <Project
+            projects={projects}
+            colors={colors}
             onAddNewProject = {onAddNewProject}
             onRemoveProject = {id => {
               const newProjectsList = projects.filter(item => item.id !== id);
               setProjects(newProjectsList);
             }}
-            projects={projects}
           />
         </div>
         <div className="content__tasks">

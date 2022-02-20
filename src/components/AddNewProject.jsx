@@ -1,40 +1,47 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 import classNames from "classnames";
 import { BsPlus } from "react-icons/bs";
 
 import Badge from "./Badge";
-import DB from "../assets/db.json";
 
-function AddNewProject({onAddNewProject}) {
+
+function AddNewProject({colors, onAddNewProject}) {
   const [
     openAddProjectPopup,
     setOpenAddProjectPopup
   ] = useState(false);
-  const [colorNewProject, setColorNewProject] = useState(DB.colors[0].id);
+  const [colorNewProject, setColorNewProject] = useState(1);
   const [nameNewProject, setNameNewProject] = useState("");
+
+  useEffect(() => {
+    if (Array.isArray(colors)) {
+      setColorNewProject(colors[0].id);
+    }
+  }, [colors]);
 
   const onCloseAddProjectPopup = () => {
     setOpenAddProjectPopup(!openAddProjectPopup);
     setNameNewProject("");
-    setColorNewProject(DB.colors[0].id);
+    setColorNewProject(colors[0].id);
   }
 
   const addProject = () => {
-    if(!nameNewProject) {
+    if (!nameNewProject) {
       alert("Enter project name");
       return;
     }
-    const colorProject = DB.colors.filter(
-      color => color.id === colorNewProject
-    )[0].name;
-    onAddNewProject(
-      {
-        "id": Math.random(),
-        "name": nameNewProject,
-        color: colorProject
-      }
-    );
-    onCloseAddProjectPopup();
+    axios
+      .post("http://localhost:3001/projects", {
+        name: nameNewProject,
+        colorId: colorNewProject
+      })
+      .then(({data}) => {
+        const color = colors.filter(c => c.id === colorNewProject)[0];
+        const listObj = {...data, color};
+        onAddNewProject(listObj);
+        onCloseAddProjectPopup();
+      });
   }
 
   return (
@@ -83,7 +90,7 @@ function AddNewProject({onAddNewProject}) {
                 <div className="form__colors">
                   <ul className="colors__list list">
                     {
-                      DB.colors.map((color, index) => (
+                      colors.map((color, index) => (
                         <li
                           key={index}
                           className= {

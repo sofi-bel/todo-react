@@ -1,7 +1,7 @@
 import { BsChevronDown } from "react-icons/bs";
 import AddNewProject from "./AddNewProject";
 
-function ProjectHeader({onAddNewProject}) {
+function ProjectHeader({colors, onAddNewProject}) {
   return (
     <div className="project__header list__item">
       <button
@@ -13,7 +13,7 @@ function ProjectHeader({onAddNewProject}) {
         <BsChevronDown size="16px"/>
       </button>
       <p className="project__header-title list__title text">Projects</p>
-      <AddNewProject onAddNewProject = {onAddNewProject} />
+      <AddNewProject colors={colors} onAddNewProject={onAddNewProject} />
     </div>
   )
 }
