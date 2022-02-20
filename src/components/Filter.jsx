@@ -1,26 +1,26 @@
 import classNames from "classnames";
 
-function Filter({items}) {
+function Filter({filters}) {
   return (
     <ul className="filter list">
       {
-        items.map((item, index) => (
+        filters.map((filter, index) => (
           <li
             key={index}
             className= {
             classNames(
               "filter__item list__item",
-              item.className,
-              { current : item.current}
+              filter.className,
+              { current : filter.current}
             )
           }
           >
             {
               <div className="filter__icon list__icon list__icon_position_left">
-                {item.icon}
+                {filter.icon}
               </div>
             }
-            <span className="filter__title list__title">{item.title}</span>
+            <span className="filter__title list__title">{filter.title}</span>
           </li>
         ))
       }

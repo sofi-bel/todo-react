@@ -1,10 +1,9 @@
 import classNames from "classnames";
-
 import ProjectHeader from "./ProjectHeader"
 import Badge from "./Badge";
 import { BsX  } from "react-icons/bs";
 
-function Project({projects, onAddProject, onRemoveProject}) {
+function Project({projects, onAddNewProject, onRemoveProject}) {
   const removeProject = (project) => {
     if(window.confirm("Do you really want to delete the project?")) {
       onRemoveProject(project.id);
@@ -13,16 +12,16 @@ function Project({projects, onAddProject, onRemoveProject}) {
 
   return (
     <ul className="project list">
-      <ProjectHeader onNewProject={onAddProject}/>
+      <ProjectHeader onAddNewProject={onAddNewProject}/>
       {
-        projects.map((item, index) => (
+        projects.map((project, index) => (
           <li
             key={index}
             className= {
               classNames(
                 "project__item list__item",
-                item.className,
-                { current : item.current}
+                project.className,
+                { current : project.current}
               )
             }
           >
@@ -30,12 +29,12 @@ function Project({projects, onAddProject, onRemoveProject}) {
               <div
                 className="project__icon project__icon_position_left
                 list__icon list__icon_position_left">
-                <Badge color={item.color}/>
+                <Badge color={project.color}/>
               </div>
             }
-            <span className="project__title list__title">{item.name}</span>
+            <span className="project__title list__title">{project.name}</span>
             <button
-              onClick={() => removeProject(item)}
+              onClick={() => removeProject(project)}
               className="project__icon project__icon_position_right
               list__icon list__icon_position_right button button_type_icon"
               aria-label="Remove Project"

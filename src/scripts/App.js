@@ -21,7 +21,7 @@ function App() {
     })
   );
 
-  const onAddProject = (obj) => {
+  const onAddNewProject = (obj) => {
      const newProjectList = [
       ...projects,
       obj
@@ -49,7 +49,7 @@ function App() {
       <main className="content app__content">
         <div className="content__sidebar">
           <Filter
-            items={[
+            filters={[
               {
                 icon: (
                   <BsInbox color="#0d6efd"/>
@@ -81,7 +81,7 @@ function App() {
             ]}
           />
           <Project
-            onAddProject = {onAddProject}
+            onAddNewProject = {onAddNewProject}
             onRemoveProject = {id => {
               const newProjectsList = projects.filter(item => item.id !== id);
               setProjects(newProjectsList);
