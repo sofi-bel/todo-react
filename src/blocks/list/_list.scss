@@ -6,7 +6,6 @@ $list-icon-size: 1.5rem;
 
 .list {
   $self: &;
-  $project: project;
 
   margin: 0;
   padding: 0;
@@ -24,8 +23,8 @@ $list-icon-size: 1.5rem;
     font-size: map.get($font-size, xs);
     cursor: pointer;
 
-    &.current:not(#{$project}__header),
-    &:hover:not(.#{$project}__header) {
+    &.current,
+    &:hover {
       background-color: map.get($theme-colors, "list-item-hover");
     }
   }
@@ -37,12 +36,7 @@ $list-icon-size: 1.5rem;
     min-width: $list-icon-size;
     min-height: $list-icon-size;
 
-    &.#{$project}__header-icon_position_right:hover {
-      border-radius: $border-radius;
-      background-color: map.get($theme-colors, "list-item-hover");
-    }
-
-    &_position_right:not(.#{$project}__header-icon) {
+    &_position_right {
       opacity: 0;
       transition: opacity $transition-duration;
 

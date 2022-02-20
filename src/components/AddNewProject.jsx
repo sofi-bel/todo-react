@@ -5,7 +5,6 @@ import { BsPlus } from "react-icons/bs";
 
 import Badge from "./Badge";
 
-
 function AddNewProject({colors, onAddNewProject}) {
   const [
     openAddProjectPopup,
@@ -13,6 +12,7 @@ function AddNewProject({colors, onAddNewProject}) {
   ] = useState(false);
   const [colorNewProject, setColorNewProject] = useState(1);
   const [nameNewProject, setNameNewProject] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (Array.isArray(colors)) {
@@ -31,6 +31,7 @@ function AddNewProject({colors, onAddNewProject}) {
       alert("Enter project name");
       return;
     }
+    setIsLoading(true);
     axios
       .post("http://localhost:3001/projects", {
         name: nameNewProject,
@@ -41,20 +42,28 @@ function AddNewProject({colors, onAddNewProject}) {
         const listObj = {...data, color};
         onAddNewProject(listObj);
         onCloseAddProjectPopup();
+      })
+      .catch(() => {
+        alert("Error adding list");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
   return (
     <>
-      <button
-        onClick={() => setOpenAddProjectPopup(!openAddProjectPopup)}
-        className="project__header-icon project__header-icon_position_right
-          list__icon list__icon_position_right
-          button button_type_icon"
-        aria-label="Add Project"
-      >
-        <BsPlus size="21px"/>
-      </button>
+      <div className="add-project">
+        <button
+          onClick={() => setOpenAddProjectPopup(!openAddProjectPopup)}
+          className="add-project__button button button_type_icon"
+          aria-label="Add Project"
+        >
+          <BsPlus size="21px"/>
+        </button>
+        <p className="add-project__title text">Add new Projects</p>
+      </div>
+
       {openAddProjectPopup && (
         <div className="popup page__popup popup_type_add-project">
           <div className="popup__container">
@@ -125,7 +134,7 @@ function AddNewProject({colors, onAddNewProject}) {
                   className="form__button button button_theme_primary"
                   type="button"
                 >
-                  Save
+                  {isLoading ? 'Saving...' : 'Save'}
                 </button>
               </div>
             </form>

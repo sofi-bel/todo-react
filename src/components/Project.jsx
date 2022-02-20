@@ -2,10 +2,9 @@ import axios from "axios";
 import classNames from "classnames";
 import { BsX  } from "react-icons/bs";
 
-import ProjectHeader from "./ProjectHeader"
 import Badge from "./Badge";
 
-function Project({projects, colors, onAddNewProject, onRemoveProject}) {
+function Project({projects, onRemoveProject}) {
   const removeProject = (project) => {
     if(window.confirm("Do you really want to delete the project?")) {
       axios.delete("http://localhost:3001/projects/" + project.id).then(() => {
@@ -16,7 +15,6 @@ function Project({projects, colors, onAddNewProject, onRemoveProject}) {
 
   return (
     <ul className="project list">
-      <ProjectHeader colors={colors} onAddNewProject={onAddNewProject}/>
       {
         projects.map((project, index) => (
           <li

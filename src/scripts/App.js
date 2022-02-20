@@ -12,6 +12,7 @@ import {
 import Filter from "../components/Filter";
 import Project from "../components/Project";
 import Tasks from "../components/Tasks";
+import AddNewProject from "../components/AddNewProject";
 
 import DB from "../assets/db.json";
 
@@ -89,10 +90,9 @@ function App() {
               }
             ]}
           />
+          <AddNewProject colors={colors} onAddNewProject={onAddNewProject} />
           <Project
             projects={projects}
-            colors={colors}
-            onAddNewProject = {onAddNewProject}
             onRemoveProject = {id => {
               const newProjectsList = projects.filter(item => item.id !== id);
               setProjects(newProjectsList);
