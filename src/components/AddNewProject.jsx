@@ -64,8 +64,9 @@ function AddNewProject({colors, onAddNewProject}) {
         <p className="add-project__title text">Add new Projects</p>
       </div>
 
-      {openAddProjectPopup && (
-        <div className="popup page__popup popup_type_add-project">
+      {
+        openAddProjectPopup && (
+          <div className="popup page__popup popup_type_add-project">
           <div className="popup__container">
             <h2 className="popup__title title">Add project</h2>
             <form
@@ -140,7 +141,7 @@ function AddNewProject({colors, onAddNewProject}) {
             </form>
           </div>
         </div>
-      )
+        )
       }
     </>
   )
