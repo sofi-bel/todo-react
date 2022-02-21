@@ -5,13 +5,13 @@ function Badge({color, onClick, className, size}) {
     <div
       onClick={onClick}
       className={
-      classNames(
-        "badge",
-        { [`badge_color_${color}`]: color },
-        { [`badge_size_${size}`]: size },
-        className
-      )
-    }
+        classNames(
+          "badge",
+          { [`badge_color_${color}`]: color },
+          { [`badge_size_${size}`]: size },
+          className
+        )
+      }
     />
   )
 }
