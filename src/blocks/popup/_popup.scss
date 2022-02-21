@@ -8,6 +8,7 @@ $content-width-md: 26.875rem;
 .popup {
   @extend %fixed-full-size;
 
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,6 +20,7 @@ $content-width-md: 26.875rem;
     flex-direction: column;
     gap: map.get($spaces, sm);
     box-sizing: border-box;
+    min-width: $content-width-xs;
     max-width: $content-width-xs;
     padding: map.get($spaces, xs);
     border-radius: $border-radius;
@@ -26,6 +28,7 @@ $content-width-md: 26.875rem;
     box-shadow: 0 0 map.get($spaces, md) rgb(0 0 0 / 15%);
 
     @media (min-width: map.get($grid-breakpoints, md)) {
+      min-width: $content-width-md;
       max-width: $content-width-md;
       padding: map.get($spaces, sm);
     }

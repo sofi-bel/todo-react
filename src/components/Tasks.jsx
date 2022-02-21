@@ -1,8 +1,13 @@
 import axios from "axios";
 import { BsCheck2, BsPencil, BsX } from "react-icons/bs";
+import AddNewTask from "./AddNewTask";
 
 
-function Tasks({project, onEditTitle}) {
+const Tasks = ({
+  project,
+  onEditTitle,
+  onAddNewTask
+}) => {
   const editTitle = () => {
     const newTitle = window.prompt("Enter new tittle", project.name);
     if(newTitle) {
@@ -29,13 +34,14 @@ function Tasks({project, onEditTitle}) {
           <BsPencil />
         </button>
       </div>
+      <AddNewTask key={project.id} project={project} onAddNewTask={onAddNewTask} />
       <ul className="tasks__list list">
         {
-          !project.tasks.length &&
-          <h2 className="tasks__message title">No tasks</h2>
-        }
+          project.tasks && !project.tasks.length && (
+            <h2 className="tasks__message title">No tasks</h2>
+        )}
         {
-          project && project.tasks.map(task => (
+          project.tasks && project.tasks.map(task => (
             <li
               key={task.id}
               className="tasks__item task"

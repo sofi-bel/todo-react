@@ -28,7 +28,6 @@
     flex: 1;
     flex-direction: column;
     gap: map.get($spaces, xs);
-    padding: map.get($spaces, xs) 0;
   }
 
   &__item {

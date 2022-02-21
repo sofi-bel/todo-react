@@ -31,12 +31,13 @@ function AddNewProject({colors, onAddNewProject}) {
       alert("Enter project name");
       return;
     }
+    const obj = {
+      name: nameNewProject,
+      colorId: colorNewProject,
+    };
     setIsLoading(true);
     axios
-      .post("http://localhost:3001/projects", {
-        name: nameNewProject,
-        colorId: colorNewProject
-      })
+      .post("http://localhost:3001/projects", obj)
       .then(({data}) => {
         const color = colors.filter(c => c.id === colorNewProject)[0];
         const listObj = {...data, color};
@@ -53,15 +54,15 @@ function AddNewProject({colors, onAddNewProject}) {
 
   return (
     <>
-      <div className="add-project">
+      <div className="add-item add-item_type_project">
         <button
           onClick={() => setOpenAddProjectPopup(!openAddProjectPopup)}
-          className="add-project__button button button_type_icon"
+          className="add-item__button button button_type_icon"
           aria-label="Add Project"
         >
           <BsPlus size="21px"/>
         </button>
-        <p className="add-project__title text">Add new Projects</p>
+        <p className="add-item__title text">Add new Projects</p>
       </div>
 
       {
@@ -71,7 +72,7 @@ function AddNewProject({colors, onAddNewProject}) {
             <h2 className="popup__title title">Add project</h2>
             <form
               name="popup-add-project"
-              className="popup__form form form_type_add-project"
+              className="popup__form form"
             >
               <div className="form__content">
                 <label
@@ -89,7 +90,7 @@ function AddNewProject({colors, onAddNewProject}) {
                   name="project-name"
                   id="project-name"
                   className="form__input"
-                  placeholder="Shopping list"
+                  placeholder="Name of project"
                 />
                 <label
                   htmlFor="project-color"
@@ -131,6 +132,7 @@ function AddNewProject({colors, onAddNewProject}) {
                   Cancel
                 </button>
                 <button
+                  disabled={isLoading}
                   onClick={addProject}
                   className="form__button button button_theme_primary"
                   type="button"

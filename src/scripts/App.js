@@ -14,7 +14,6 @@ import Project from "../components/Project";
 import Tasks from "../components/Tasks";
 import AddNewProject from "../components/AddNewProject";
 
-
 function App() {
   const [projects, setProjects] = useState(null);
   const [colors, setColors] = useState(null);
@@ -36,6 +35,16 @@ function App() {
     setProjects(newProjectList);
   };
 
+  const onAddNewTask = (projectId, taskObj) => {
+    const newTasksList = projects.map(project => {
+      if (project.id === projectId) {
+        project.tasks = [...project.tasks, taskObj];
+      }
+      return project;
+    });
+    setProjects(newTasksList);
+  };
+
   const onEditListTitle =(id, title) => {
     const newProjectList = projects.map(project => {
       if(project.id === id) {
@@ -44,7 +53,7 @@ function App() {
       return project;
     });
     setProjects(newProjectList);
-  }
+  };
 
   return (
     <div className="app">
@@ -114,7 +123,11 @@ function App() {
         <div className="content__tasks">
           {
             projects && activeItem &&
-            <Tasks project={activeItem} onEditTitle={onEditListTitle}/>
+            <Tasks
+              project={activeItem}
+              onEditTitle={onEditListTitle}
+              onAddNewTask={onAddNewTask}
+            />
           }
         </div>
       </main>

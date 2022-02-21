@@ -1,0 +1,41 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+$task-icon-size: 1.125rem;
+$project-icon-size: 1.5rem;
+
+.add-item {
+  display: flex;
+  gap: map.get($spaces, xxs);
+  align-items: center;
+  box-sizing: border-box;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border-radius: $border-radius;
+      background-color: map.get($theme-colors, "list-item-hover");
+    }
+  }
+
+  &_type_project {
+    padding: map.get($spaces, xxs);
+
+    &__button {
+      min-width: $project-icon-size;
+      min-height: $project-icon-size;
+    }
+  }
+
+  &_type_task {
+    padding: map.get($spaces, sm) 0;
+
+    &__button {
+      min-width: $task-icon-size;
+      min-height: $task-icon-size;
+    }
+  }
+}

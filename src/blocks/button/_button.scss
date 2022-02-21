@@ -14,6 +14,11 @@
   cursor: pointer;
   transition: opacity $transition-duration ease;
 
+  &:disabled {
+    opacity: $opacity-disabled-button;
+    pointer-events: none;
+  }
+
   &_theme_primary {
     background-color: map.get($theme-colors, "primary");
     color: map.get($theme-colors, "text-light");
