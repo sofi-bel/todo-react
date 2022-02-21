@@ -5,7 +5,7 @@ import {
   BsCalendar3,
   BsGrid,
   BsPlus,
-  BsCalendarDay,
+  BsCalendar,
   BsList
 } from "react-icons/bs";
 
@@ -84,7 +84,7 @@ function App() {
               },
               {
                 icon: (
-                  <BsCalendarDay color="#198754"/>
+                  <BsCalendar color="#198754"/>
                 ),
                 title: "Today",
                 current: false,
