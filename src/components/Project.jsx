@@ -4,7 +4,7 @@ import { BsX  } from "react-icons/bs";
 
 import Badge from "./Badge";
 
-function Project({projects, onRemoveProject}) {
+function Project({projects, onRemoveProject, onClickItem, activeItem}) {
   const removeProject = (project) => {
     if(window.confirm("Do you really want to delete the project?")) {
       axios.delete("http://localhost:3001/projects/" + project.id).then(() => {
@@ -18,12 +18,13 @@ function Project({projects, onRemoveProject}) {
       {
         projects.map((project, index) => (
           <li
+            onClick={onClickItem ? () => onClickItem(project) : null}
             key={index}
             className= {
               classNames(
                 "project__item list__item",
                 project.className,
-                { current : project.current}
+                { current : activeItem &&  activeItem.id === project.id}
               )
             }
           >
@@ -35,6 +36,7 @@ function Project({projects, onRemoveProject}) {
               </div>
             }
             <span className="project__title list__title">{project.name}</span>
+            {project.tasks && project.tasks.length}
             <button
               onClick={() => removeProject(project)}
               className="project__icon project__icon_position_right

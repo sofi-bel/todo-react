@@ -14,14 +14,11 @@ import Project from "../components/Project";
 import Tasks from "../components/Tasks";
 import AddNewProject from "../components/AddNewProject";
 
-import DB from "../assets/db.json";
 
 function App() {
-  const [projects, setProjects] = useState(DB.projects.map(item => {
-    item.color = DB.colors.filter(color => color.id === item.colorId)[0].name;
-    return item;
-  }));
-  const [colors, setColors] = useState(1);
+  const [projects, setProjects] = useState(null);
+  const [colors, setColors] = useState(null);
+  const [activeItem, setActiveItem] = useState(null);
 
   useEffect(() => {
     axios
@@ -38,6 +35,16 @@ function App() {
     const newProjectList = [...projects, obj];
     setProjects(newProjectList);
   };
+
+  const onEditListTitle =(id, title) => {
+    const newProjectList = projects.map(project => {
+      if(project.id === id) {
+        project.name = title;
+      }
+      return project;
+    });
+    setProjects(newProjectList);
+  }
 
   return (
     <div className="app">
@@ -65,7 +72,6 @@ function App() {
                   <BsInbox color="#0d6efd"/>
                 ),
                 title: "Inbox",
-                current: true,
               },
               {
                 icon: (
@@ -91,16 +97,25 @@ function App() {
             ]}
           />
           <AddNewProject colors={colors} onAddNewProject={onAddNewProject} />
-          <Project
-            projects={projects}
-            onRemoveProject = {id => {
-              const newProjectsList = projects.filter(item => item.id !== id);
-              setProjects(newProjectsList);
-            }}
-          />
+          { projects &&
+            <Project
+              projects={projects}
+              onRemoveProject={id => {
+                const newProjectsList = projects.filter(item => item.id !== id);
+                setProjects(newProjectsList);
+              }}
+              onClickItem={project => {
+                setActiveItem(project);
+              }}
+              activeItem={activeItem}
+            />
+          }
         </div>
         <div className="content__tasks">
-          <Tasks />
+          {
+            projects && activeItem &&
+            <Tasks project={activeItem} onEditTitle={onEditListTitle}/>
+          }
         </div>
       </main>
       <footer className="footer">
