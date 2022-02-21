@@ -2,8 +2,13 @@
 @import "./src/scss/variables";
 
 .tasks {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   &__header {
     display: flex;
+    flex: 0 0;
     align-items: center;
     justify-content: space-between;
     padding-bottom: map.get($spaces, sm);
@@ -18,8 +23,28 @@
     }
   }
 
+  &__list {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: map.get($spaces, xs);
+    padding: map.get($spaces, xs) 0;
+  }
+
   &__item {
     display: flex;
+    gap: map.get($spaces, xxs);
     align-items: center;
+  }
+
+  &__message {
+    margin: auto;
+    font-size: map.get($font-size, sm);
+    text-align: center;
+    opacity: $opacity;
+
+    @media (min-width: map.get($grid-breakpoints, xl)) {
+      font-size: map.get($font-size, lg);
+    }
   }
 }

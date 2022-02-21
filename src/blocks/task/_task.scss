@@ -6,8 +6,6 @@ $checkbox-size: 1.125rem;
 .task {
   $self: &;
 
-  margin: map.get($spaces, xs) 0;
-
   &__input_type_checkbox {
     display: none;
   }
@@ -19,7 +17,6 @@ $checkbox-size: 1.125rem;
     min-width: $checkbox-size;
     min-height: $checkbox-size;
     max-height: fit-content;
-    margin-right: map.get($spaces, xxs);
     border: 1px solid map.get($theme-colors, "checkbox-color");
     border-radius: 50%;
     cursor: pointer;
