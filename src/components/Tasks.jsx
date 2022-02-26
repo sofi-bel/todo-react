@@ -38,7 +38,7 @@ const Tasks = ({
     <div className="tasks">
       <div className="tasks__header">
         <h1 className="tasks__title title">
-          {project.name || `${filter} tasks`}
+          { !filter ? project.name : `${filter} tasks` }
         </h1>
         {!filter &&
           <button
@@ -57,15 +57,16 @@ const Tasks = ({
           onAddNewTask={onAddNewTask}
         />
       }
-      <ul
-        className="tasks__list list"
-        id={project.id}
-        key={`project-${project.id}`}
-      >
+      {
+        project &&
+        <ul className="tasks__list list"
+          id={project.id}
+          key={`project-${project.id}`}
+        >
         {
           project.tasks && !project.tasks.length && (
             <h2 className="tasks__message title">No tasks</h2>
-        )}
+          )}
         {
           !project.tasks && filter !== "All" && (
             <h2 className="tasks__message title">No tasks</h2>
@@ -82,7 +83,7 @@ const Tasks = ({
                 type="checkbox"
               />
               <label htmlFor={`task-${task.id}`} className="task__checkbox">
-                <BsCheck2 className="task__checkbox-icon" />
+                <BsCheck2 className="task__checkbox-icon"/>
               </label>
               <input
                 type="text"
@@ -111,7 +112,7 @@ const Tasks = ({
                 type="checkbox"
               />
               <label htmlFor={`task-${task.id}`} className="task__checkbox">
-                <BsCheck2 className="task__checkbox-icon" />
+                <BsCheck2 className="task__checkbox-icon"/>
               </label>
               <input
                 type="text"
@@ -129,6 +130,7 @@ const Tasks = ({
           ))
         }
       </ul>
+      }
     </div>
   )
 }

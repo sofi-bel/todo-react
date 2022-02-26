@@ -125,6 +125,12 @@ function App() {
         </div>
         <div className="content__tasks">
           <Routes>
+            <Route path="/" element={
+              <Tasks
+                project={projects}
+                filter="Today"
+              />
+            }/>
             <Route path="/a-meti/todo" element={
               <Tasks
                 project={projects}
