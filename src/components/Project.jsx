@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { BsX } from "react-icons/bs";
 import axios from "axios";
 import classNames from "classnames";
 
 import Badge from "./Badge";
 
-function Project({projects, onRemoveProject, onClickItem, activeItem}) {
+function Project({projects, onRemoveProject, onClickItem}) {
+  const setActive=({isActive}) =>
+    isActive ? "nav-link nav-link_active" : "nav-link";
+
   const removeProject = (project) => {
     if(window.confirm("Do you really want to delete the project?")) {
       axios.delete("http://localhost:3001/projects/" + project.id).then(() => {
@@ -18,15 +21,14 @@ function Project({projects, onRemoveProject, onClickItem, activeItem}) {
     <ul className="project list">
       {
         projects.map((project, index) => (
-          <Link className="link" to={`/projects/${project.id}`} key={index}>
+          <NavLink className={setActive} to={`/projects/${project.id}`} key={index}>
             <li
               onClick={onClickItem ? () => onClickItem(project) : null}
               key={index}
               className= {
                 classNames(
                   "project__item list__item",
-                  project.className,
-                  { current : activeItem &&  activeItem.id === project.id}
+                  project.className
                 )
               }
             >
@@ -48,7 +50,7 @@ function Project({projects, onRemoveProject, onClickItem, activeItem}) {
                 <BsX size="18px"/>
               </button>
             </li>
-          </Link>
+          </NavLink>
         ))
       }
     </ul>

@@ -119,7 +119,6 @@ function App() {
               onClickItem={project => {
                 setActiveItem(project);
               }}
-              activeItem={activeItem}
             />
           }
         </div>

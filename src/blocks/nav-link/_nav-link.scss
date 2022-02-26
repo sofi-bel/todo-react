@@ -1,0 +1,14 @@
+@use "sass:map";
+@import "./src/scss/variables";
+
+.nav-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity $transition-duration ease-out;
+
+  &_active,
+  &:hover {
+    background-color: map.get($theme-colors, "list-item-hover");
+  }
+}

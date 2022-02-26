@@ -19,14 +19,7 @@ $list-icon-size: 1.5rem;
     min-height: $list-item-height;
     padding: map.get($spaces, xxs);
     border-radius: $border-radius;
-    color: map.get($theme-colors, "text-secondary");
     font-size: map.get($font-size, xs);
-    cursor: pointer;
-
-    &.current,
-    &:hover {
-      background-color: map.get($theme-colors, "list-item-hover");
-    }
   }
 
   &__icon {
