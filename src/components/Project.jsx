@@ -21,7 +21,11 @@ function Project({projects, onRemoveProject, onClickItem}) {
     <ul className="project list">
       {
         projects.map((project, index) => (
-          <NavLink className={setActive} to={`/projects/${project.id}`} key={index}>
+          <NavLink
+            className={setActive}
+            to={`/projects/${project.id}`}
+            key={project.id}
+          >
             <li
               onClick={onClickItem ? () => onClickItem(project) : null}
               key={index}
