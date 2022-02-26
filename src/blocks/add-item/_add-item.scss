@@ -31,7 +31,7 @@ $project-icon-size: 1.5rem;
   }
 
   &_type_task {
-    padding: map.get($spaces, sm) 0;
+    padding-bottom: map.get($spaces, sm);
 
     &__button {
       min-width: $task-icon-size;

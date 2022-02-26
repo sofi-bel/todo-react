@@ -9,13 +9,14 @@ $sidebar-width: 19rem;
 
   &__sidebar,
   &__tasks {
+    overflow: auto;
     box-sizing: border-box;
+    max-height: calc(100vh - (#{$navbar-height} + #{$footer-height}));
     padding: map.get($spaces, md);
   }
 
   &__sidebar {
     max-width: $sidebar-width;
-    height: calc(100vh - (#{$navbar-height} + #{$footer-height}));
     background-color: map.get($theme-colors, "bg-secondary");
   }
 

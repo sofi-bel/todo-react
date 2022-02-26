@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import {useEffect, useState} from "react";
+import { Routes, Route } from "react-router-dom";
 import {
-  BsInbox,
+  BsCalendar,
   BsCalendar3,
   BsGrid,
-  BsPlus,
-  BsCalendar,
-  BsList
+  BsInbox,
+  BsList,
+  BsPlus
 } from "react-icons/bs";
+import axios from "axios";
 
 import Filter from "../components/Filter";
+import AddNewProject from "../components/AddNewProject";
 import Project from "../components/Project";
 import Tasks from "../components/Tasks";
-import AddNewProject from "../components/AddNewProject";
 
 function App() {
   const [projects, setProjects] = useState(null);
@@ -76,32 +77,34 @@ function App() {
         <div className="content__sidebar">
           <Filter
             filters={[
+              // TODO: Inbox make project list
               {
                 icon: (
                   <BsInbox color="#0d6efd"/>
                 ),
                 title: "Inbox",
+                path: "inbox",
               },
               {
                 icon: (
                   <BsCalendar color="#198754"/>
                 ),
                 title: "Today",
-                current: false,
+                path: "today",
               },
               {
                 icon: (
                   <BsCalendar3 color="#6f42c1"/>
                 ),
                 title: "Planned",
-                current: false,
+                path: "planned",
               },
               {
                 icon: (
                   <BsGrid color="#fd7e14"/>
                 ),
                 title: "All tasks",
-                current: false,
+                path: "all",
               }
             ]}
           />
@@ -121,14 +124,52 @@ function App() {
           }
         </div>
         <div className="content__tasks">
-          {
-            projects && activeItem &&
-            <Tasks
-              project={activeItem}
-              onEditTitle={onEditListTitle}
-              onAddNewTask={onAddNewTask}
+          <Routes>
+            <Route path="/a-meti/todo" element={
+              <Tasks
+                project={projects}
+                filter="Today"
+              />
+            }
             />
-          }
+            <Route path="filter/inbox" element={
+              <Tasks
+                project={projects}
+                filter="Inbox"
+              />
+            }
+            />
+            <Route path="filter/today" element={
+              <Tasks
+                project={projects}
+                filter="Today"
+              />
+            }
+            />
+            <Route path="filter/planned" element={
+              <Tasks
+                project={projects}
+                filter="Planned"
+              />
+            }
+            />
+            <Route path="filter/all" element={
+              <Tasks
+                project={projects}
+                onEditTitle={onEditListTitle}
+                onAddNewTask={onAddNewTask}
+                filter="All"
+              />
+            }
+            />
+            <Route path="projects/:id" element={
+              <Tasks
+                project={activeItem}
+                onEditTitle={onEditListTitle}
+                onAddNewTask={onAddNewTask}
+              />
+            }/>
+          </Routes>
         </div>
       </main>
       <footer className="footer">
