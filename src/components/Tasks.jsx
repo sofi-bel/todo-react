@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { BsCheck2, BsPencil, BsX } from "react-icons/bs";
+import { BsPencil } from "react-icons/bs";
 import axios from "axios";
 
 import AddNewTask from "./AddNewTask";
+import Task from "./Task";
 
 const Tasks = ({
   project,
   onEditTitle,
   onAddNewTask,
+  onRemoveTask,
   filter
 }) => {
   const editTitle = () => {
@@ -73,60 +75,22 @@ const Tasks = ({
           )}
         {
           allTasks && filter === "All" && allTasks.map(task =>
-            <li
+            <Task
               key={task.id}
-              className="tasks__item task"
-            >
-              <input
-                id={`task-${task.id}`}
-                className="task__input_type_checkbox"
-                type="checkbox"
-              />
-              <label htmlFor={`task-${task.id}`} className="task__checkbox">
-                <BsCheck2 className="task__checkbox-icon"/>
-              </label>
-              <input
-                type="text"
-                className="task__title"
-                value={task.text}
-                readOnly
-              />
-              <button
-                className="task__icon list__icon button button_type_icon"
-                aria-label="Remove Task"
-              >
-                <BsX size="18px"/>
-              </button>
-            </li>
+              project={project}
+              onRemove={onRemoveTask}
+              task={task}
+            />
           )
         }
         {
           project.tasks && project.tasks.map(task => (
-            <li
+            <Task
               key={task.id}
-              className="tasks__item task"
-            >
-              <input
-                id={`task-${task.id}`}
-                className="task__input_type_checkbox"
-                type="checkbox"
-              />
-              <label htmlFor={`task-${task.id}`} className="task__checkbox">
-                <BsCheck2 className="task__checkbox-icon"/>
-              </label>
-              <input
-                type="text"
-                className="task__title"
-                value={task.text}
-                readOnly
-              />
-              <button
-                className="task__icon list__icon button button_type_icon"
-                aria-label="Remove Task"
-              >
-                <BsX size="18px"/>
-              </button>
-            </li>
+              project={project}
+              onRemove={onRemoveTask}
+              task={task}
+            />
           ))
         }
       </ul>

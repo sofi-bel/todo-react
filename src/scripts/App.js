@@ -36,6 +36,17 @@ function App() {
     setProjects(newProjectList);
   };
 
+  const onEditListTitle =(id, title) => {
+    const newProjectList = projects.map(project => {
+      if(project.id === id) {
+        project.name = title;
+      }
+      return project;
+    });
+    setProjects(newProjectList);
+  };
+
+  // TODO: make update all task list after add new task
   const onAddNewTask = (projectId, taskObj) => {
     const newTasksList = projects.map(project => {
       if (project.id === projectId) {
@@ -46,15 +57,23 @@ function App() {
     setProjects(newTasksList);
   };
 
-  const onEditListTitle =(id, title) => {
-    const newProjectList = projects.map(project => {
-      if(project.id === id) {
-        project.name = title;
-      }
-      return project;
-    });
-    setProjects(newProjectList);
-  };
+  // TODO: make update all task list after delete task
+  const onRemoveTask = (projectId, taskId) => {
+    if (window.confirm("Are you sure you want to delete the task?")) {
+      const newProjectList = projects.map(project => {
+        if (project.id === projectId) {
+          project.tasks = project.tasks.filter(task => task.id !==taskId);
+        }
+        return project;
+      });
+      setProjects(newProjectList);
+      axios
+        .delete("http://localhost:3001/tasks/" + taskId)
+        .catch(() => {
+        alert("Failed to update task tittle")
+      });
+    }
+  }
 
   return (
     <div className="app">
@@ -163,6 +182,7 @@ function App() {
                 project={projects}
                 onEditTitle={onEditListTitle}
                 onAddNewTask={onAddNewTask}
+                onRemoveTask={onRemoveTask}
                 filter="All"
               />
             }
@@ -172,6 +192,7 @@ function App() {
                 project={activeItem}
                 onEditTitle={onEditListTitle}
                 onAddNewTask={onAddNewTask}
+                onRemoveTask={onRemoveTask}
               />
             }/>
           </Routes>
