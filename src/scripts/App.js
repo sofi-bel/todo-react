@@ -126,6 +126,7 @@ function App() {
         alert("Failed to update task");
       });
   };
+
   return (
     <div className="app">
       <header className="header app__header">
@@ -145,6 +146,7 @@ function App() {
       </header>
       <main className="content app__content">
         <div className="content__sidebar">
+
           <Filter
             filters={[
               // TODO: Inbox make project list
@@ -178,8 +180,10 @@ function App() {
               }
             ]}
           />
+
           <AddNewProject colors={colors} onAddNewProject={onAddNewProject} />
-          { projects &&
+
+          { projects ? (
             <Project
               projects={projects}
               onRemoveProject={id => {
@@ -190,66 +194,80 @@ function App() {
                 setActiveItem(project);
               }}
             />
+            ) : ("Loading...")
           }
         </div>
         <div className="content__tasks">
           <Routes>
             <Route path="/" element={
-              <Tasks
-                project={projects}
-                filter="Today"
-              />
+              projects && (
+                <Tasks
+                  project={projects}
+                  filter="Today"
+                />
+              )
             }/>
             <Route path="/a-meti/todo" element={
-              <Tasks
-                project={projects}
-                filter="Today"
-              />
+              projects && (
+                <Tasks
+                  project={projects}
+                  filter="Today"
+                />
+              )
             }
             />
             <Route path="filter/inbox" element={
-              <Tasks
-                project={projects}
-                filter="Inbox"
-              />
+              projects && (
+                <Tasks
+                  project={projects}
+                  filter="Inbox"
+                />
+              )
             }
             />
             <Route path="filter/today" element={
-              <Tasks
-                project={projects}
-                filter="Today"
-              />
+              projects && (
+                <Tasks
+                  project={projects}
+                  filter="Today"
+                />
+              )
             }
             />
             <Route path="filter/planned" element={
-              <Tasks
-                project={projects}
-                filter="Planned"
-              />
+              projects && (
+                <Tasks
+                  project={projects}
+                  filter="Planned"
+                />
+              )
             }
             />
-            <Route path="filter/all" element={
-              <Tasks
-                project={projects}
-                onEditTitle={onEditProjectTitle}
-                onAddNewTask={onAddNewTask}
-                onRemoveTask={onRemoveTask}
-                onEditTask={onEditTask}
-                onCompleteTask={onCompleteTask}
-                filter="All"
-              />
-            }
+            <Route path="filter/all" element=
+              { projects && (
+                <Tasks
+                  project={projects}
+                  onEditTitle={onEditProjectTitle}
+                  onAddNewTask={onAddNewTask}
+                  onRemoveTask={onRemoveTask}
+                  onEditTask={onEditTask}
+                  onCompleteTask={onCompleteTask}
+                  filter="All"
+                />
+              )}
             />
-            <Route path="projects/:id" element={
-              <Tasks
-                project={activeItem}
-                onEditTitle={onEditProjectTitle}
-                onAddNewTask={onAddNewTask}
-                onRemoveTask={onRemoveTask}
-                onEditTask={onEditTask}
-                onCompleteTask={onCompleteTask}
-              />
-            }/>
+            <Route path="projects/:id" element=
+              { projects && activeItem && (
+                <Tasks
+                  project={activeItem}
+                  onEditTitle={onEditProjectTitle}
+                  onAddNewTask={onAddNewTask}
+                  onRemoveTask={onRemoveTask}
+                  onEditTask={onEditTask}
+                  onCompleteTask={onCompleteTask}
+                />
+              )}
+            />
           </Routes>
         </div>
       </main>

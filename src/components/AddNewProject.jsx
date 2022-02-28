@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
+import { BsPlus } from "react-icons/bs";
 import axios from "axios";
 import classNames from "classnames";
-import { BsPlus } from "react-icons/bs";
 
 import Badge from "./Badge";
 
@@ -40,8 +40,8 @@ function AddNewProject({colors, onAddNewProject}) {
       .post("http://localhost:3001/projects", obj)
       .then(({data}) => {
         const color = colors.filter(c => c.id === colorNewProject)[0];
-        const listObj = {...data, color};
-        onAddNewProject(listObj);
+        const projectData = {...data, color};
+        onAddNewProject(projectData);
         onCloseAddProjectPopup();
       })
       .catch(() => {
@@ -115,7 +115,9 @@ function AddNewProject({colors, onAddNewProject}) {
                               onClick={() => setColorNewProject(color.id)}
                               key={color.id}
                               color={color.name}
-                              className={colorNewProject === color.id && "active"}
+                              className={
+                                colorNewProject === color.id && "active"
+                              }
                               size= "big"
                             />
                           }

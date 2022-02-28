@@ -21,6 +21,7 @@ const Task = (props) => {
         <BsCheck2 className="task__checkbox-icon"/>
       </label>
       <p className="task__title text">{props.task.text}</p>
+
       <button
         onClick={() => {
           props.onEdit(props.project.id, props.task)
@@ -30,7 +31,8 @@ const Task = (props) => {
       >
         <BsPencil size="10px"/>
       </button>
-      <div
+
+      <button
         onClick={() => {
           props.onRemove(props.project.id, props.task.id)
         }}
@@ -38,7 +40,7 @@ const Task = (props) => {
         aria-label="Remove Task"
       >
         <BsX size="18px"/>
-      </div>
+      </button>
     </li>
   )
 }

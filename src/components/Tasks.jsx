@@ -41,6 +41,7 @@ const Tasks = ({
   return (
     <div className="tasks">
       <div className="tasks__header">
+        {/*TODO: Fix a problem related to refresh page */}
         <h1 className="tasks__title title">
           { !filter ? project.name : `${filter} tasks` }
         </h1>
@@ -61,8 +62,6 @@ const Tasks = ({
           onAddNewTask={onAddNewTask}
         />
       }
-      {
-        project &&
         <ul className="tasks__list list"
           id={project.id}
           key={`project-${project.id}`}
@@ -100,7 +99,6 @@ const Tasks = ({
           ))
         }
       </ul>
-      }
     </div>
   )
 }

@@ -7,7 +7,7 @@ function Filter({filters}) {
 
   return (
     <ul className="filter list">
-      {
+      { filters &&
         filters.map((filter, index) => (
           <NavLink
             key={index}
