@@ -75,6 +75,35 @@ function App() {
     }
   }
 
+  // TODO: make update all task list after edit task
+  const onEditTask = (projectId, taskObj) => {
+    const newTaskTitle = window.prompt("Task title", taskObj.text);
+
+    if (!newTaskTitle) {
+      return;
+    }
+
+    const newTasksList = projects.map(project => {
+      if (project.id === projectId) {
+        project.tasks = project.tasks.map(task => {
+          if (task.id === taskObj.id) {
+            task.text = newTaskTitle;
+          }
+          return task;
+        });
+      }
+      return project;
+    });
+    setProjects(newTasksList);
+    axios
+      .patch("http://localhost:3001/tasks/" + taskObj.id, {
+        text: newTaskTitle
+      })
+      .catch(() => {
+        alert("Failed to update task title");
+      });
+  };
+
   return (
     <div className="app">
       <header className="header app__header">
@@ -183,6 +212,7 @@ function App() {
                 onEditTitle={onEditListTitle}
                 onAddNewTask={onAddNewTask}
                 onRemoveTask={onRemoveTask}
+                onEditTask={onEditTask}
                 filter="All"
               />
             }
@@ -193,6 +223,7 @@ function App() {
                 onEditTitle={onEditListTitle}
                 onAddNewTask={onAddNewTask}
                 onRemoveTask={onRemoveTask}
+                onEditTask={onEditTask}
               />
             }/>
           </Routes>

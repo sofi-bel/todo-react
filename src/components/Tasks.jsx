@@ -10,6 +10,7 @@ const Tasks = ({
   onEditTitle,
   onAddNewTask,
   onRemoveTask,
+  onEditTask,
   filter
 }) => {
   const editTitle = () => {
@@ -79,6 +80,7 @@ const Tasks = ({
               key={task.id}
               project={project}
               onRemove={onRemoveTask}
+              onEdit={onEditTask}
               task={task}
             />
           )
@@ -89,6 +91,7 @@ const Tasks = ({
               key={task.id}
               project={project}
               onRemove={onRemoveTask}
+              onEdit={onEditTask}
               task={task}
             />
           ))

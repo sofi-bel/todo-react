@@ -16,6 +16,9 @@ const Task = (props) => {
       </label>
       <p className="task__title text">{props.task.text}</p>
       <button
+        onClick={() => {
+          props.onEdit(props.project.id, props.task)
+        }}
         className="task__icon list__icon button button_type_icon"
         aria-label="Edit Task"
       >
