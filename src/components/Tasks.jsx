@@ -7,16 +7,17 @@ import Task from "./Task";
 
 const Tasks = ({
   project,
-  onEditTitle,
+  onEditProjectTitle,
   onAddNewTask,
   onRemoveTask,
   onEditTask,
+  onCompleteTask,
   filter
 }) => {
-  const editTitle = () => {
+  const editProjectTitle = () => {
     const newTitle = window.prompt("Enter new tittle", project.name);
     if(newTitle) {
-      onEditTitle(project.id, newTitle);
+      onEditProjectTitle(project.id, newTitle);
       axios
         .patch("http://localhost:3001/projects/" + project.id, {
           name: newTitle
@@ -45,7 +46,7 @@ const Tasks = ({
         </h1>
         {!filter &&
           <button
-            onClick={editTitle}
+            onClick={editProjectTitle}
             className="button button_type_icon list__icon"
             aria-label="Edit project name"
           >
@@ -81,6 +82,7 @@ const Tasks = ({
               project={project}
               onRemove={onRemoveTask}
               onEdit={onEditTask}
+              onComplete={onCompleteTask}
               task={task}
             />
           )
@@ -92,6 +94,7 @@ const Tasks = ({
               project={project}
               onRemove={onRemoveTask}
               onEdit={onEditTask}
+              onComplete={onCompleteTask}
               task={task}
             />
           ))

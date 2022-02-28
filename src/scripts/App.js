@@ -36,9 +36,9 @@ function App() {
     setProjects(newProjectList);
   };
 
-  const onEditListTitle =(id, title) => {
+  const onEditProjectTitle =(id, title) => {
     const newProjectList = projects.map(project => {
-      if(project.id === id) {
+      if (project.id === id) {
         project.name = title;
       }
       return project;
@@ -104,6 +104,28 @@ function App() {
       });
   };
 
+  // TODO: make update all task list after complete task
+  const onCompleteTask = (projectId, taskId, completed) => {
+    const newProjectList = projects.map(project => {
+      if (project.id === projectId) {
+        project.tasks = project.tasks.map(task => {
+          if (task.id === taskId) {
+            task.completed = completed;
+          }
+          return task;
+        });
+      }
+      return project;
+    });
+    setProjects(newProjectList);
+    axios
+      .patch("http://localhost:3001/tasks/" + taskId, {
+        completed
+      })
+      .catch(() => {
+        alert("Failed to update task");
+      });
+  };
   return (
     <div className="app">
       <header className="header app__header">
@@ -209,10 +231,11 @@ function App() {
             <Route path="filter/all" element={
               <Tasks
                 project={projects}
-                onEditTitle={onEditListTitle}
+                onEditTitle={onEditProjectTitle}
                 onAddNewTask={onAddNewTask}
                 onRemoveTask={onRemoveTask}
                 onEditTask={onEditTask}
+                onCompleteTask={onCompleteTask}
                 filter="All"
               />
             }
@@ -220,10 +243,11 @@ function App() {
             <Route path="projects/:id" element={
               <Tasks
                 project={activeItem}
-                onEditTitle={onEditListTitle}
+                onEditTitle={onEditProjectTitle}
                 onAddNewTask={onAddNewTask}
                 onRemoveTask={onRemoveTask}
                 onEditTask={onEditTask}
+                onCompleteTask={onCompleteTask}
               />
             }/>
           </Routes>

@@ -1,15 +1,21 @@
 import { BsCheck2, BsPencil, BsX } from "react-icons/bs";
 
 const Task = (props) => {
+  const onChangeCheckbox = e => {
+    props.onComplete(props.project.id, props.task.id, e.target.checked);
+  };
+
   return (
     <li
       key={props.task.id}
       className="tasks__item task"
     >
       <input
+        onChange={onChangeCheckbox}
         id={`task-${props.task.id}`}
         className="task__input_type_checkbox"
         type="checkbox"
+        checked={props.task.completed}
       />
       <label htmlFor={`task-${props.task.id}`} className="task__checkbox">
         <BsCheck2 className="task__checkbox-icon"/>
