@@ -35,7 +35,7 @@
 Clone the repo
 
 ```
-git clone https://github.com/a-meti/todo.git
+git clone https://github.com/sofi-bel/todo.git
 ```
 Install dependencies
 ```
