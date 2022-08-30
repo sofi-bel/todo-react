@@ -3,8 +3,8 @@
   <h1>To-Do</h1>
   <p>To-Do app on React.js</p>
   <a href="https://wakatime.com/badge/user/29a8352f-15fa-421a-b8ff-a7adff87a0dc/project/aa921b32-cf4d-4cef-a833-bf56ce53dfb9"><img src="https://wakatime.com/badge/user/29a8352f-15fa-421a-b8ff-a7adff87a0dc/project/aa921b32-cf4d-4cef-a833-bf56ce53dfb9.svg?style=for-the-badge&logo=appveyor" alt="wakatime"></a>  
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/a-meti/todo?style=for-the-badge">
-  <a href="https://github.com/a-meti/todo/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/a-meti/todo?style=for-the-badge"></a>
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/sofi-bel/todo?style=for-the-badge">
+  <a href="https://github.com/sofi-bel/todo/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/sofi-bel/todo?style=for-the-badge"></a>
   <p>
       <a href="https://jigsaw.w3.org/css-validator/check/referer">
           <img style="border:0;width:88px;height:31px"
