@@ -207,7 +207,7 @@ function App() {
                 />
               )
             }/>
-            <Route path="/a-meti/todo" element={
+            <Route path="/sofi-bel/todo" element={
               projects && (
                 <Tasks
                   project={projects}
@@ -274,10 +274,10 @@ function App() {
       <footer className="footer">
         <p className="footer__author text">&copy; 2022</p>
         <a className="footer__author-link link"
-           href="https://www.linkedin.com/in/a-meti/"
+           href="https://www.linkedin.com/in/sofi-bel/"
            target="_blank"
            rel="noopener noreferrer">
-          Anastasiia Metikova
+          Sofi Bel
         </a>
       </footer>
     </div>

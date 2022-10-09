@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "To-Do app on React.js",
   "private": true,
-  "homepage": "https://github.com/a-meti/todo",
+  "homepage": "https://github.com/sofi-bel/todo",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -12,17 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a-meti/todo.git"
+    "url": "git+https://github.com/sofi-bel/todo.git"
   },
   "keywords": [
     "js",
     "javascript",
     "react"
   ],
-  "author": "Anastasiia Metikova <metikova3@icloud.com>",
+  "author": "Sofi Bel <metikova3@icloud.com>",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/a-meti/todo/issues"
+    "url": "https://github.com/sofi-bel/todo/issues"
   },
   "devDependencies": {
     "prettier": "^2.7.1",
