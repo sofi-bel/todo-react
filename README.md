@@ -2,6 +2,8 @@
 <div align="center">
   <h1>To-Do</h1>
   <p>To-Do app on React.js</p>
+  <i>The project is not finished. There are problems that will be fixed later.</i>
+
   <a href="https://wakatime.com/badge/user/29a8352f-15fa-421a-b8ff-a7adff87a0dc/project/aa921b32-cf4d-4cef-a833-bf56ce53dfb9"><img src="https://wakatime.com/badge/user/29a8352f-15fa-421a-b8ff-a7adff87a0dc/project/aa921b32-cf4d-4cef-a833-bf56ce53dfb9.svg?style=for-the-badge&logo=appveyor" alt="wakatime"></a>  
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/sofi-bel/todo?style=for-the-badge">
   <a href="https://github.com/sofi-bel/todo/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/sofi-bel/todo?style=for-the-badge"></a>
@@ -44,6 +46,10 @@ yarn install
 Server with hot reload at http://localhost:3000/
 ```
 yarn start
+```
+Run fake DB
+```
+yarn fake-json
 ```
 Production Build
 ```
