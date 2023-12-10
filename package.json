@@ -35,7 +35,7 @@
     "stylelint-order": "^6.0.3",
     "stylelint-prettier": "^3.0.0",
     "stylelint-sass-render-errors": "^3.2.0",
-    "stylelint-scss": "^4.6.0"
+    "stylelint-scss": "^5.3.1"
   },
   "dependencies": {
     "axios": "^1.6.2",
