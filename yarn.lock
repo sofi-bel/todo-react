@@ -7220,7 +7220,7 @@ node-releases@^2.0.2:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.2.tgz#7139fe71e2f4f11b47d4d2986aaf8c48699e0c01"
   integrity sha512-XxYDdcQ6eKqp/YjI+tb2C5WM2LgjnZrfYg4vgQt49EK268b6gYCHsBLrK2qvJo4FmCtqmKezb0WZFK4fkrZNsg==
 
-node-sass-json-functions@^3.1.0:
+node-sass-json-functions@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/node-sass-json-functions/-/node-sass-json-functions-3.3.0.tgz#bac3c699f06a05ce1c97d76fbf7ddda544c75370"
   integrity sha512-v1yJal7brM+pZ+bkbMDoDJcfHw9jOZ0DNw5pDbg3hx6U6/HTrXCS02YKkl7KdTbZc3il3cr+enBal+zCELfN1g==
@@ -9054,16 +9054,16 @@ sass-loader@^12.3.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass-render-errors@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/sass-render-errors/-/sass-render-errors-1.8.0.tgz#d9b74a5df223e950a15b48a3e73a1d9ebc707715"
-  integrity sha512-dTDRk1frK0OEEi8mmcUvERM3wvoahc4S2Pbo4vEJJp1u/8AveNa/xHSYUGLcFhIKpx/lAtEBaRaK25GN4lGIFQ==
+sass-render-errors@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/sass-render-errors/-/sass-render-errors-1.9.0.tgz#11b51d60afc22f5551b965432611d0b131f065af"
+  integrity sha512-fzdXU+eqaa7ZWdFg7uMEijBuB5awh8LGX4zngyVOsbxjBbQRojY9CVjeDv7iQDkly1mbR0nQKBBCzJrJaiMh+w==
   dependencies:
     "@types/sass" "^1.16.1"
     css-functions-list "^2.0.0"
     hook-std "^2.0.0"
     nanoid "^3.1.25"
-    node-sass-json-functions "^3.1.0"
+    node-sass-json-functions "^3.3.0"
     p-debounce "^2.1.0"
     p-memoize "^4.0.2"
     p-queue "^6.6.2"
@@ -9829,10 +9829,10 @@ stylelint-prettier@^3.0.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-stylelint-sass-render-errors@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-sass-render-errors/-/stylelint-sass-render-errors-3.0.0.tgz#cf3f4ad00e3af0da6bd3e6e8fe149d83540138d2"
-  integrity sha512-EuZKquGSu4iprySLy+dAkwY8RCxoQicAnV+lJkK0eI7U5Bt6ev50CQvrh8/bgLi94O9iZLsDVlw1Z/MGsakz4A==
+stylelint-sass-render-errors@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/stylelint-sass-render-errors/-/stylelint-sass-render-errors-3.2.0.tgz#8bc28d915cc70d9fe54b6ccb84abe7917855e6fe"
+  integrity sha512-vNdIh7NrxJP1btKq8FQACwHCP9MbzmPSqHOq4yKLLY6x0MIDkFYIuQaarInw02yqfObquop+Ea4sgcdHlxd97A==
   dependencies:
     ajv "^8.6.2"
     many-keys-map "^1.0.3"
@@ -9840,7 +9840,7 @@ stylelint-sass-render-errors@^3.0.0:
     p-memoize "^4.0.1"
     pkg-up "^3.1.0"
     resolve-from "^5.0.0"
-    sass-render-errors "^1.8.0"
+    sass-render-errors "^1.9.0"
 
 stylelint-scss@^4.0.0, stylelint-scss@^4.6.0:
   version "4.6.0"
